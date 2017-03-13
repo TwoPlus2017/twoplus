@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.twoplus.cms.dao.WebSiteDAO" >
+
+	<resultMap id="websiteResultMap" type="com.twoplus.cms.data.webappfunction.WebSiteData">
+		<result column="ID" 				property="id" 				 													/>
+		<result column="NAME" 				property="name" 						javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="SHOWNAME" 			property="showName" 					javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="CODE" 				property="code" 						javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="DESCRIPTIONS" 		property="desc" 						javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="DOMAIN_NAME" 		property="domainName" 					javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="INDUSTRY_ID" 		property="industryId" 		 													/>
+		<result column="WEBSITE_THEME_ID" 	property="webSiteThemeId" 		 												/>
+		<result column="ES_INDEX_NAME" 		property="esIndexName" 					javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="ES_ARTICLE_TYPE" 	property="esArticleTypeName" 			javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="ES_POST_TYPE" 		property="esPostTypeName" 				javaType="string" jdbcType="VARCHAR" 	/>
+		<result column="CREATE_BY" 			property="createBy" 		 													/>
+		<result column="CREATE_DATE" 		property="createDate" 					javaType="string" jdbcType="TIMESTAMP"	/>
+		<result column="LASTUPDATE_BY" 		property="lastUpdateBy" 	 												  	/>
+		<result column="LASTUPDATE_DATE" 	property="lastUpdateDate" 				javaType="string" jdbcType="TIMESTAMP"	/>
+		<result column="ENABLED" 			property="enabled" 			 													/>
+	</resultMap>
+	
+	<insert id="insertWebSite" useGeneratedKeys="true" keyProperty="id" parameterType="com.twoplus.cms.data.webappfunction.WebSiteData">
+		INSERT INTO SWSBT_WEBSITE (NAME, SHOWNAME, CODE, DESCRIPTIONS, DOMAIN_NAME, INDUSTRY_ID, WEBSITE_THEME_ID, CREATE_BY, CREATE_DATE, LASTUPDATE_BY, LASTUPDATE_DATE, ENABLED)
+		VALUES (#{name}, #{showName}, #{code}, #{desc}, #{domainName}, #{industryId}, #{webSiteThemeId}, #{createBy}, #{createDate}, #{lastUpdateBy}, #{lastUpdateDate}, #{enabled})
+	</insert>
+	
+	<select id="getOneWebSite" parameterType="String" resultMap="websiteResultMap">
+		<include refid="selectAllWebSite"/>
+		WHERE NW.ID = #{id}
+	</select>
+	
+	<select id="getAllWebSite" parameterType="String" resultMap="websiteResultMap">
+		<include refid="selectAllWebSite"/>
+	</select>
+
+	<sql id="selectAllWebSite">  
+		SELECT 
+			NW.ID,
+			NW.NAME,
+			NW.SHOWNAME,
+			NW.CODE,
+			NW.DESCRIPTIONS,
+			NW.DOMAIN_NAME,
+			NW.INDUSTRY_ID,
+			NW.WEBSITE_THEME_ID,
+			NW.ES_INDEX_NAME,
+			NW.ES_ARTICLE_TYPE,
+			NW.ES_POST_TYPE,
+			NW.CREATE_BY,
+			NW.CREATE_DATE,
+			NW.LASTUPDATE_BY,
+			NW.LASTUPDATE_DATE,
+			NW.ENABLED
+		FROM napt_website NW
+	</sql>
+	
+</mapper>

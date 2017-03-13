@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>	
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+    
+    <context:annotation-config />
+    
+    <context:component-scan base-package="com.twoplus.cms.service.impl" />
+   	
+   	<!-- Quartz Section 
+	<bean id="refreshWebSiteCacheJob" class="com.newageplan.platform.timer.RefreshWebSiteCache"/>
+	<bean id="refreshWebSiteCacheJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="refreshWebSiteCacheJob"/>
+        <property name="targetMethod" value="refreshWebSiteDailyCache"/>
+        <property name="concurrent" value="false"/>
+	</bean>
+	<bean id="refreshWebSiteCacheTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="refreshWebSiteCacheJobDetail"/>
+		<property name="cronExpression" value="0 0 16 * * ?" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="refreshWebSiteCacheTrigger"/>
+			</list>
+		</property>
+		<property name="autoStartup" value="true"/>
+	</bean>
+	 -->
+	
+	<!-- Data, DTO and DAO Section -->
+	<bean id="daoFacade" class="com.twoplus.cms.dao.DAOFacade" scope="singleton"/>
+
+	<bean id="cacheFactory" class="com.twoplus.platform.factory.CacheFactory"/>
+	<bean class="com.twoplus.platform.listener.InitLiveWebSiteListener" />
+	
+	
+
+
+</beans>
