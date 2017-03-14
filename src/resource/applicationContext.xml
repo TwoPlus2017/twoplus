@@ -26,7 +26,7 @@
 	</bean>
 	<bean id="gatherHotKWFromYahooTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="gatherHotKWFromYahooJobDetail"/>
-		<property name="cronExpression" value="0 0/10 * * * ?" />
+		<property name="cronExpression" value="0 0/3 * * * ?" />
 	</bean>
 	
 	<!--
@@ -49,7 +49,7 @@
 	</bean>
 	<bean id="mergeHotKWIntoDBESTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="mergeHotKWIntoDBESJobDetail"/>
-		<property name="cronExpression" value="0 25 15 0/1 * ?" />
+		<property name="cronExpression" value="0 25 15 * * ?" />
 	</bean>
 	
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
