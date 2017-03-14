@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.twoplus.applicationLevel.dao.GatherKWDAO" >
+
+	<insert id="insertGatherKeyWordList" parameterType="com.twoplus.applicationLevel.data.GatherDTO">
+		INSERT INTO SWSBT_KW_HOT (NAME, TITLE, SELF_URL, LEVEL, CREATED_DATE, LAST_UPDATE_DATE, ENABLED) 
+		VALUES 
+		<foreach collection="gatherKWList" item="item" index="index" separator="," >
+			('${item.name}', '${item.title}', '${item.selfUrl}', '${item.level}', NOW(), NOW(), '1')
+	    </foreach>
+	</insert>
+	
+	<delete id="deleteHotKeyWordsFromTable">
+		DELETE FROM SWSBT_KW_HOT;
+	</delete>
+	
+</mapper>
