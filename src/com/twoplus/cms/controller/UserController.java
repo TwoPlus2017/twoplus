@@ -47,7 +47,7 @@ import com.twoplus.espider.constant.CMSConstants;
 @RequestMapping(CMSConstants.URL_CMS + CMSConstants.SLASH + CMSConstants.URL_USER)
 public class UserController {
 	
-	/** Represents the logger field */
+	/** Represents the logger field *//*
 	private static Log logger = LogFactory.getLog(UserController.class);
 	
 	@Resource
@@ -90,6 +90,6 @@ public class UserController {
 		//dashBoardSvc.gatherDataForDashBoard(dbData);
 		
 		return CMSConstants.PAGE_USER_SHOW_DASHBOARD;
-	}
+	}*/
 
 }

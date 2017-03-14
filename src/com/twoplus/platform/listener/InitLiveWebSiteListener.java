@@ -47,10 +47,10 @@ public class InitLiveWebSiteListener implements InitializingBean, ServletContext
 	/** Represents the logger field */
 	private static Log logger = LogFactory.getLog(InitLiveWebSiteListener.class);
 	
-	@Resource
-	private CacheFactory cacheFactory;
-	@Resource
-	private DAOFacade daoFacade;
+	//@Resource
+	//private CacheFactory cacheFactory;
+	//@Resource
+	//private DAOFacade daoFacade;
 
 	/**
 	 * @see org.springframework.web.context.ServletContextAware#setServletContext(javax.servlet.ServletContext)
@@ -58,7 +58,7 @@ public class InitLiveWebSiteListener implements InitializingBean, ServletContext
 	 */
 	@Override
 	public void setServletContext(ServletContext servletContext) {
-		logger.debug("InitLiveWebSiteListener ----> setServletContext");
+		/*logger.debug("InitLiveWebSiteListener ----> setServletContext");
 		
 		List<WebSiteData> webSites = new ArrayList<WebSiteData>();
 		
@@ -78,11 +78,11 @@ public class InitLiveWebSiteListener implements InitializingBean, ServletContext
 				webSiteMapById.put(aData.getId(), aData);
 				webSiteMapByShowName.put(aData.getShowName(), aData);
 			}
-		}
+		}*/
 	}
 	
 	private void buildNicheWebSiteData(List<WebSiteData> webSite) throws Exception {
-		List<WebSiteData> tempWebSite = new ArrayList<WebSiteData>();
+		/*List<WebSiteData> tempWebSite = new ArrayList<WebSiteData>();
 		
 		tempWebSite = daoFacade.getAllWebSite();
 		
@@ -90,7 +90,7 @@ public class InitLiveWebSiteListener implements InitializingBean, ServletContext
 			
 			
 			webSite.add(aData);
-		}
+		}*/
 	}
 
 	/**

@@ -44,7 +44,7 @@ public class WebSiteController {
 	
 	private static Log logger = LogFactory.getLog(WebSiteController.class);
 	
-	@Resource
+	/*@Resource
 	private WebSiteSvcIfc webSiteSvc;
 	
 	@RequestMapping(value=CMSConstants.URL_VIEW_ALL_WEBSITE, method=RequestMethod.GET)
@@ -79,6 +79,6 @@ public class WebSiteController {
 		webSiteSvc.insertWebSite(webSiteData);
         
         return CMSConstants.PAGE_VIEW_ONE_WEBSITE;
-    }
+    }*/
 
 }

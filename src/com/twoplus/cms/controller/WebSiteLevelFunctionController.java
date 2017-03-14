@@ -44,7 +44,7 @@ public class WebSiteLevelFunctionController {
 	
 	private static Log logger = LogFactory.getLog(WebSiteLevelFunctionController.class);
 	
-	@Resource
+	/*@Resource
 	private WebSiteLevelFunctionSvcIfc webSiteLevelFuncSvc;
 	
 	@RequestMapping(value=CMSConstants.URL_DO_WEBSITE_SITEMAP, method=RequestMethod.GET)
@@ -63,6 +63,6 @@ public class WebSiteLevelFunctionController {
 		webSiteLevelFuncSvc.analysisNginxLogs(webSiteNginxLogData);
 		
 		return "";
-	}
+	}*/
 
 }

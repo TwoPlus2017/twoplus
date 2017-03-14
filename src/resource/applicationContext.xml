@@ -17,33 +17,54 @@
     
     <context:component-scan base-package="com.twoplus.cms.service.impl" />
    	
-   	<!-- Quartz Section 
-	<bean id="refreshWebSiteCacheJob" class="com.newageplan.platform.timer.RefreshWebSiteCache"/>
-	<bean id="refreshWebSiteCacheJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject" ref="refreshWebSiteCacheJob"/>
-        <property name="targetMethod" value="refreshWebSiteDailyCache"/>
+   	<!-- Quartz Section -->
+	<bean id="gatherHotKWFromYahooJob" class="com.twoplus.espider.gather.hotkeywords.GatherHotKeyWordsFromYahoo"/>
+	<bean id="gatherHotKWFromYahooJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="gatherHotKWFromYahooJob"/>
+        <property name="targetMethod" value="gather"/>
         <property name="concurrent" value="false"/>
 	</bean>
-	<bean id="refreshWebSiteCacheTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="refreshWebSiteCacheJobDetail"/>
-		<property name="cronExpression" value="0 0 16 * * ?" />
+	<bean id="gatherHotKWFromYahooTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="gatherHotKWFromYahooJobDetail"/>
+		<property name="cronExpression" value="0 0/10 * * * ?" />
+	</bean>
+	
+	<!--
+	<bean id="gatherHotKWFromTrends24Job" class="com.twoplus.espider.gather.hotkeywords.GatherHotKeyWordsFromTrends24"/>
+	<bean id="gatherHotKWFromTrends24JobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="gatherHotKWFromTrends24Job"/>
+        <property name="targetMethod" value="gather"/>
+        <property name="concurrent" value="false"/>
+	</bean>
+	<bean id="gatherHotKWFromTrends24Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="gatherHotKWFromTrends24JobDetail"/>
+		<property name="cronExpression" value="0 17 0/1 * * ?" />
+	</bean>-->
+	
+	<bean id="mergeHotKWIntoDBESJob" class="com.twoplus.espider.cronjob.es.MergeDBHotKWToES"/>
+	<bean id="mergeHotKWIntoDBESJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="mergeHotKWIntoDBESJob"/>
+        <property name="targetMethod" value="merge"/>
+        <property name="concurrent" value="false"/>
+	</bean>
+	<bean id="mergeHotKWIntoDBESTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mergeHotKWIntoDBESJobDetail"/>
+		<property name="cronExpression" value="0 25 15 0/1 * ?" />
 	</bean>
 	
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="refreshWebSiteCacheTrigger"/>
+				<ref bean="gatherHotKWFromYahooTrigger"/>
+				<ref bean="mergeHotKWIntoDBESTrigger"/>
 			</list>
 		</property>
 		<property name="autoStartup" value="true"/>
 	</bean>
-	 -->
+	 
 	
 	<!-- Data, DTO and DAO Section -->
-	<bean id="daoFacade" class="com.twoplus.cms.dao.DAOFacade" scope="singleton"/>
-
-	<bean id="cacheFactory" class="com.twoplus.platform.factory.CacheFactory"/>
-	<bean class="com.twoplus.platform.listener.InitLiveWebSiteListener" />
+	<bean id="applicationDaoFacade" class="com.twoplus.applicationLevel.dao.ApplicationDAOFacade"/>
 	
 	
 

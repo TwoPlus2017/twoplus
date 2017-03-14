@@ -18,7 +18,6 @@ import com.twoplus.cms.dao.DAOFacade;
 import com.twoplus.cms.data.webappfunction.WebSiteData;
 import com.twoplus.cms.data.webappfunction.WebSiteNginxLogData;
 import com.twoplus.cms.service.WebSiteLevelFunctionSvcIfc;
-import com.twoplus.espider.manager.SiteMapManagerIfc;
 import com.twoplus.espider.util.Utils;
 
 
@@ -40,14 +39,13 @@ import com.twoplus.espider.util.Utils;
  *
  */
 
-@Service("webSiteLevelFuncSvc")
 public class WebSiteLevelFunctionSvcImpl extends CMSTopService implements WebSiteLevelFunctionSvcIfc {
 
 	/** Represents the logger field */
 	private static Log logger = LogFactory.getLog(WebSiteSvcImpl.class);
 	
-	@Resource
-	private DAOFacade daoFacade;
+	//@Resource
+	//private DAOFacade daoFacade;
 
 	@Override
 	public void doWSSiteMap(WebSiteData webSiteData) throws Exception {

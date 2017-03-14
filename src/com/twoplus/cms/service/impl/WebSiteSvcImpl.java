@@ -30,7 +30,6 @@ import com.twoplus.cms.service.WebSiteSvcIfc;
  *
  */
 
-@Service("webSiteSvc")
 public class WebSiteSvcImpl extends CMSTopService implements WebSiteSvcIfc {
 
 	@Override
