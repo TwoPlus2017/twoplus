@@ -29,7 +29,7 @@ public class MergeDBHotKWToES {
 	@Resource
 	private ApplicationDAOFacade applicationDaoFacade;
 	
-	public String dbUrl = "jdbc:mysql://127.0.0.1:3308/xxx?user=xxx&password=xxx&useUnicode=true&characterEncoding=UTF8";
+	public String dbUrl = "jdbc:mysql://127.0.0.1:3308/xxx?user=xxx&password=xxxx&useUnicode=true&characterEncoding=UTF8";
 	
 	
 	
